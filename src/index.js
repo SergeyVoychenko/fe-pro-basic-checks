@@ -42,7 +42,20 @@ export const reducerIf = function (action, string) {
  * @param {string} string
  * @returns {string}
  */
-export const reducerSwitch = 0;
+export const reducerSwitch = (action, string) => {
+    switch (action) {
+        case 'uppercase':
+            return string.toUpperCase();
+        case 'lowercase':
+            return string.toLowerCase();
+        case 'capitalize':
+            return string.split(' ').map(item => `${item[0].toUpperCase()}${item.slice(1)}`).join(' ');
+        case 'fence':
+            return string.split('').map((item, index) => index % 2 == 0 ? `${item[0].toLowerCase()}` : `${item[0].toUpperCase()}`).join('');
+        default:
+            return string;
+    }
+};
 
 /**
  Стрелочная
